@@ -14,9 +14,10 @@ class COFFEPROJECT_API ACoffeGroundsActor : public AActor
 	
 public:	
 	
+	
 	ACoffeGroundsActor();
 
-	UPROPERTY(EditAnywhere, Category = "Coffe Machine")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Coffe Machine")
 	ACoffeMachineBase* CoffeMachine = nullptr;
 
 protected:

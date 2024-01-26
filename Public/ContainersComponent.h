@@ -14,6 +14,7 @@ class COFFEPROJECT_API UContainersComponent : public UActorComponent
 
 public:	
 
+
     UContainersComponent();
 
 	UFUNCTION(BlueprintCallable)
@@ -41,7 +42,15 @@ public:
 	float GetCoffeGroundsLevel();
 
 	UFUNCTION(BlueprintCallable)
+	float GetTargetCoffeGroundsLevel();
+
+	UFUNCTION(BlueprintCallable)
 	void AddToTargetWaterLevel(float Value);
+
+	UFUNCTION(BlueprintCallable)
+	void GetContainersValueRefs(bool &CoffeEmpty, bool &WaterNotEmpty);
+
+
 
 protected:
 	

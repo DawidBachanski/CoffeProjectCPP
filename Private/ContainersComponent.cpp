@@ -61,6 +61,11 @@ float UContainersComponent::GetCoffeGroundsLevel()
     return CurrentCoffeGroundsLevel;
 }
 
+float UContainersComponent::GetTargetCoffeGroundsLevel()
+{
+    return TargetCurrentCoffeGroundsLevel;
+}
+
 void UContainersComponent::AddToTargetWaterLevel(float Value)
 {
 	if(FMath::IsNearlyEqual(TargetCurrentWaterLevel, 100.0f, 0.1f))
@@ -71,6 +76,23 @@ void UContainersComponent::AddToTargetWaterLevel(float Value)
        TargetCurrentWaterLevel = 100.0f;
 	}else{
 		TargetCurrentWaterLevel+=Value;
+	}
+}
+
+void UContainersComponent::GetContainersValueRefs(bool &CoffeEmpty, bool &WaterNotEmpty)
+{
+	if(TargetCurrentWaterLevel>25.f)
+	{
+		WaterNotEmpty = true;
+	}else{
+		WaterNotEmpty = false;
+	}
+
+	if(TargetCurrentCoffeGroundsLevel<75.f)
+	{
+		CoffeEmpty = true;
+	}else{
+		CoffeEmpty = false;
 	}
 }
 
@@ -89,10 +111,11 @@ void UContainersComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 	UpdateCurrentWaterLevel();
 
-	if(!BlockedCoffeUpdate)
+	/*if(!BlockedCoffeUpdate)
 	{
-      UpdateCurrentCoffeLevel();
-	}
+      //UpdateCurrentCoffeLevel();
+	}*/
+	
 	
 }
 

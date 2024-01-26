@@ -13,6 +13,7 @@ class COFFEPROJECT_API UInteractionComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+
 public:	
 	// Sets default values for this component's properties
 	UInteractionComponent();

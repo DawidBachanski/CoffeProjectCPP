@@ -15,6 +15,49 @@ ACoffeMachineBase::ACoffeMachineBase()
 
 }
 
+
+bool ACoffeMachineBase::GetIsDuringPouring()
+{
+    return IsDuringPouring;
+}
+
+void ACoffeMachineBase::SetIsDuringPouring(bool state)
+{
+	IsDuringPouring = state;
+}
+
+bool ACoffeMachineBase::GetIsIncomplete()
+{
+    return IsIncomplete;
+}
+
+bool ACoffeMachineBase::CanUseDisplay()
+{
+    return !(IsDisplayBlocked||IsDuringPouring||IsIncomplete);
+}
+
+void ACoffeMachineBase::SetIsDisplayBlocked(bool IsBlocked)
+{
+	IsDisplayBlocked = IsBlocked;
+}
+
+void ACoffeMachineBase::SetIsIncomplete(bool state)
+{
+	IsIncomplete = state;
+}
+
+void ACoffeMachineBase::MakeCoffe(int CoffeType)
+{
+	ContainerComponent->SetNewTargetCoffeGroundsLevel((ContainerComponent->GetTargetCoffeGroundsLevel())+20.0f);
+	ContainerComponent->AddToTargetWaterLevel(-20.0f);
+	StartMakeCoffe(CoffeType);
+}
+
+void ACoffeMachineBase::StartMakeCoffe_Implementation(int CoffeType)
+{
+	
+}
+
 // Called when the game starts or when spawned
 void ACoffeMachineBase::BeginPlay()
 {

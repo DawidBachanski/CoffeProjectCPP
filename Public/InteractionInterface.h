@@ -15,6 +15,7 @@ class UInteractionInterface : public UInterface
 
 /**
  * 
+ 
  */
 class COFFEPROJECT_API IInteractionInterface
 {

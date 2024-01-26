@@ -17,6 +17,7 @@ void APlayerControllerBase::CreateWidgetOrDestroy_Implementation(bool bShouldCre
 }
 
 void APlayerControllerBase::BeginPlay()
+
 {
    Super::BeginPlay();
    if(InteractionComponent){

@@ -18,6 +18,7 @@ UInteractionComponent::UInteractionComponent()
 	// ...
 }
 
+
 void UInteractionComponent::InitComponnent(ACharacter* PlayerCharacter, APlayerController* PlayerController)
 {
 	LocalPlayerCharacter = PlayerCharacter;
@@ -73,9 +74,15 @@ void UInteractionComponent::CheckCurrentActor()
 	AActor* HittedActor = HitResult.GetActor();
 	if(HittedActor!=nullptr&&HittedActor->GetClass()->ImplementsInterface(UInteractionInterface::StaticClass()))
 	{
-		CurrentTargetActor = HittedActor;
-		UE_LOG(LogTemp, Warning, TEXT("EKSPRES HITED"));
-		CastedPlayerController->CreateWidgetOrDestroy(true, IInteractionInterface::Execute_GetInteractText(CurrentTargetActor));
+		if(IInteractionInterface::Execute_GetCanInteract(HittedActor))
+		{
+          CurrentTargetActor = HittedActor;
+		  UE_LOG(LogTemp, Warning, TEXT("EKSPRES HITED"));
+		  CastedPlayerController->CreateWidgetOrDestroy(true, IInteractionInterface::Execute_GetInteractText(CurrentTargetActor));
+		}else{
+			OnLoseActor();
+		}
+		
 	}else
 	{
 		OnLoseActor();
